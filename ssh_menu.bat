@@ -19,16 +19,17 @@ echo 4) Servidor de tools dcm04
 echo 5) Servidor de ORACLE m05-legacy
 echo 6) Servidor de YugabyteDB Lider dcm05
 echo 7) Servidor de YugabyteDB Replica dcm06
+echo 8) Servidor de crs dcm07
 echo.
 echo X) Salir
 echo.
 echo ==========================================
 
-:: Usamos CHOICE: 1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, X=8
-choice /C 1234567X /N /M "Selecciona una opcion: "
+:: Usamos CHOICE: 1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8 X=9
+choice /C 12345678X /N /M "Selecciona una opcion: "
 set seleccion=%errorlevel%
 
-if %seleccion%==8 goto salir
+if %seleccion%==9 goto salir
 
 :pregunta_ventana
 echo.
@@ -48,6 +49,7 @@ if %seleccion%==4 %lanzador% ssh dcm04
 if %seleccion%==5 %lanzador% ssh m05-legacy
 if %seleccion%==6 %lanzador% ssh dcm05
 if %seleccion%==7 %lanzador% ssh dcm06
+if %seleccion%==8 %lanzador% ssh dcm07
 
 :: Si se abrio en la misma ventana (N = opcion 2), pausamos para ver errores
 if %nueva%==2 pause
